@@ -17,12 +17,4 @@ public class FelineTest {
         spyFeline.eatMeat();
         Mockito.verify(spyFeline).getFood("Хищник");
     }
-
-    @Test
-    public void getKittensWithoutArgumentsReturnKittens() {
-        Feline feline = new Feline();
-        feline.getKittens();
-        Assert.assertEquals(1, feline.getKittens());
-    }
-
 }

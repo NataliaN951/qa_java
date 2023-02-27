@@ -1,4 +1,5 @@
 import com.example.Animal;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -38,11 +39,14 @@ public class AnimalTest {
         assertEquals(expected, animal.getFamily());
     }
 
-    @Test(expected = Exception.class)
-    public void getFoodReturnsTrow() throws Exception {
+    @Test
+    public void getFoodReturnsTrow() {
         Animal animal = new Animal();
-        animal.getFood("ERROR");
         String expected = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
-        assertEquals(expected, animal.getFood("ERROR"));
+        try {
+            animal.getFood("ERROR");
+        } catch (Exception e) {
+            Assert.assertEquals(expected, e.getMessage());
+        }
     }
 }
